@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_octicons/flutter_octicons.dart';
+import 'package:github/screens/search_screen.dart';
 
 class HomeScreen extends StatelessWidget{
   const HomeScreen({super.key});
@@ -24,9 +25,19 @@ class HomeScreen extends StatelessWidget{
                 appBar: AppBar(
                     title: Text('Home',style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
                     actions: [
-                        IconButton(onPressed: (){}, icon: Icon(Icons.search,color: Color(0xFF86B5EB),size: 22)),
+                        IconButton(onPressed: (){
+                          Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => const SearchScreen()),);
+                          }, 
+                          icon: Icon(Icons.search,color: Color(0xFF86B5EB),size: 22)),
                         IconButton(onPressed: (){}, icon: Icon(Icons.loop_outlined,color: Color(0xFF86B5EB),size: 22)),
-                        IconButton(onPressed: (){}, icon: Icon(Icons.add_circle_outline,color: Color(0xFF86B5EB),size: 22)),
+                        PopupMenuButton(
+                          color: const Color(0xFF2D333B),
+                          itemBuilder: (context) => [
+                            PopupMenuItem(child: Text('Create Issue', style: TextStyle(fontSize: 15),)),
+                            PopupMenuItem(child: Text('New repository', style: TextStyle(fontSize: 15),))
+                          ],
+                         icon: Icon(Icons.add_circle_outline,color: Color(0xFF86B5EB),size: 22)),
                         IconButton(onPressed: (){}, icon: Icon(Icons.person,color: Color(0xFF86B5EB),size: 22))
                     ],
                     backgroundColor: const Color(0xFF17181C),
