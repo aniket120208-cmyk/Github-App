@@ -27,17 +27,60 @@ class GithubApp extends StatelessWidget {
                 ),
 
                 bottomNavigationBar: 
-                    BottomNavigationBar(
-                        type: BottomNavigationBarType.fixed,
-                        backgroundColor: Colors.black,
-                        selectedItemColor: Colors.white,
-                        unselectedItemColor: Colors.grey,
-                        items: [
-                            BottomNavigationBarItem(icon: Icon(Icons.home_outlined),label: 'Home'),
-                            BottomNavigationBarItem(icon: Icon(Icons.inbox),label: 'Inbox'),
-                            BottomNavigationBarItem(icon: Icon(Icons.travel_explore),label: 'Explore'),
-                            BottomNavigationBarItem(icon: Icon(Icons.code),label: 'Copilot'),
-                        ],
+                    Container(
+                        decoration: const BoxDecoration(
+                            border: Border(
+                                top: BorderSide(color: Color(0xFF30363D), width: 0.8),
+                            ),
+                        ),
+                        child: NavigationBarTheme(
+                            data: NavigationBarThemeData(
+                                backgroundColor: const Color(0xFF161B22),
+                                indicatorColor: const Color(0xFF1F6FEB).withValues(alpha: 0.35),
+                                labelTextStyle: WidgetStateProperty.resolveWith((states) {
+                                    final isSelected = states.contains(WidgetState.selected);
+                                    return TextStyle(
+                                        color: isSelected ? Colors.white : const Color(0xFF8B949E),
+                                        fontSize: 12,
+                                        fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
+                                    );
+                                }),
+                                iconTheme: WidgetStateProperty.resolveWith((states) {
+                                    final isSelected = states.contains(WidgetState.selected);
+                                    return IconThemeData(
+                                        color: isSelected ? const Color(0xFF58A6FF) : const Color(0xFF8B949E),
+                                        size: 22,
+                                    );
+                                }),
+                            ),
+                            child: NavigationBar(
+                                selectedIndex: 0,
+                                onDestinationSelected: (index) {},
+                                height: 65,
+                                destinations: const [
+                                    NavigationDestination(
+                                        icon: Icon(OctIcons.home_24),
+                                        selectedIcon: Icon(OctIcons.home_fill_24),
+                                        label: 'Home',
+                                    ),
+                                    NavigationDestination(
+                                        icon: Icon(OctIcons.inbox_24),
+                                        selectedIcon: Icon(OctIcons.inbox_fill_24),
+                                        label: 'Inbox',
+                                    ),
+                                    NavigationDestination(
+                                        icon: Icon(OctIcons.telescope_24),
+                                        selectedIcon: Icon(OctIcons.telescope_fill_24),
+                                        label: 'Explore',
+                                    ),
+                                    NavigationDestination(
+                                        icon: Icon(OctIcons.copilot_24),
+                                        selectedIcon: Icon(OctIcons.copilot_24),
+                                        label: 'Copilot',
+                                    ),
+                                ],
+                            ),
+                        ),
                     ),
                 
                 body: 
@@ -53,6 +96,7 @@ class GithubApp extends StatelessWidget {
                                     IconButton(onPressed: (){}, icon: Icon(Icons.more_horiz, color: const Color.fromARGB(103, 255, 255, 255),)),
                                 ],
                             ),
+                            SizedBox(height: 20),
                             InkWell(
                             child: Row(
                                 children: [
@@ -122,9 +166,12 @@ class GithubApp extends StatelessWidget {
                             child: Row(
                                 children: [
                                     Container(
-                                        color: Color(0xFF30363D),
                                         height: 35,
                                         width: 35,
+                                        decoration: BoxDecoration(
+                                            color: Color(0xFF30363D),
+                                            borderRadius: BorderRadius.circular(5)
+                                        ),
                                         child: IconButton(onPressed: (){}, icon: Icon(OctIcons.repo_24, color: Colors.white, size: 20,),),),
                                     SizedBox(width: 20,),
                                     Text('Top Repositories', style: TextStyle(color: Colors.white, fontSize: 17),)
@@ -135,9 +182,12 @@ class GithubApp extends StatelessWidget {
                             child: Row(
                                 children: [
                                     Container(
-                                        color: Colors.orange,
                                         height: 35,
                                         width: 35,
+                                        decoration: BoxDecoration(
+                                            color: Colors.orange,
+                                            borderRadius: BorderRadius.circular(5)
+                                        ),
                                         child: IconButton(onPressed: (){}, icon: Icon(OctIcons.organization_24, color: Colors.white, size: 20,),),),
                                     SizedBox(width: 20,),
                                     Text('Organizations', style: TextStyle(color: Colors.white, fontSize: 17),)
@@ -148,43 +198,92 @@ class GithubApp extends StatelessWidget {
                             child: Row(
                                 children: [
                                     Container(
-                                        color: const Color(0xFFD4A72C),
                                         height: 35,
                                         width: 35,
+                                        decoration: BoxDecoration(
+                                            color: const Color(0xFFD4A72C),
+                                            borderRadius: BorderRadius.circular(5)
+                                        ),
                                         child: IconButton(onPressed: (){}, icon: Icon(OctIcons.star_24, color: Colors.white, size: 20,),),),
                                     SizedBox(width: 20,),
                                     Text('Starred', style: TextStyle(color: Colors.white, fontSize: 17),)
                                 ],
                             ),),
                             SizedBox(height: 20,),
+                            const Divider(
+                                color: Color(0xFF30363D),
+                                thickness: 1,
+                                height: 40,
+                            ),
+                            SizedBox(height: 20,),
                             Padding(padding: EdgeInsetsGeometry.only(right: 250),
                             child: Text('Favorites', style: TextStyle(color: Colors.white, fontSize: 17, fontWeight: FontWeight.bold,), textAlign: TextAlign.start,),),
                             SizedBox(height: 30,),
                             Text('Add favorite repositories for quick access at any time, without having to search', style: TextStyle(color: const Color.fromARGB(162, 255, 255, 255), fontSize: 17),textAlign: TextAlign.center,),
-                            SizedBox(height: 7,),
-                            OutlinedButton(onPressed: (){}, child: Text('ADD FAVORITES',style: TextStyle(color: Colors.blue),)),
+                            SizedBox(height: 15,),
+                            SizedBox(
+                              width: double.infinity,
+                              height: 40,
+                              child: OutlinedButton(onPressed: (){}, 
+                              style: OutlinedButton.styleFrom(
+                                  backgroundColor: const Color(0xFF21262D),
+                                  side: const BorderSide(
+                                    color: Color(0xFF30363D),
+                                    width: 1,
+                                  ),
+                                  shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(6),
+                                  ),
+                                ),
+                                child: Text('ADD FAVORITES',style: TextStyle(color: Colors.blue,),),
+                              ),
+                            ),
+                            SizedBox(height: 20,),
+                            const Divider(
+                                color: Color(0xFF30363D),
+                                thickness: 1,
+                                height: 40,
+                            ),
                             SizedBox(height: 20,),
                             Padding(padding: EdgeInsetsGeometry.only(right: 240),
                             child: Text('Shortcuts', style: TextStyle(color: Colors.white, fontSize: 17, fontWeight: FontWeight.bold,), textAlign: TextAlign.start,),),
                             SizedBox(height: 30,),
                             Row(
-                                children: [
-                                    IconButton(onPressed: (){}, icon: Icon(Icons.circle, color: Colors.blue,)),
-                                    IconButton(onPressed: (){}, icon: Icon(Icons.circle, color: Colors.blue,)),
-                                    IconButton(onPressed: (){}, icon: Icon(Icons.circle, color: Colors.blue,)),
-                                    IconButton(onPressed: (){}, icon: Icon(Icons.circle, color: Colors.blue,)),
-                                    IconButton(onPressed: (){}, icon: Icon(Icons.circle, color: Colors.blue,)),
-                                    IconButton(onPressed: (){}, icon: Icon(Icons.circle, color: Colors.blue,)),
-                                    
-                                ],
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                _buildCircle(const Color(0xFF30363D), OctIcons.zap_16),
+                                _buildCircle(const Color(0xFF238636), OctIcons.issue_opened_16),
+                                _buildCircle(const Color(0xFF1F6FEB), OctIcons.git_pull_request_16),
+                                _buildCircle(const Color(0xFF8957E5), OctIcons.comment_discussion_16),
+                                _buildCircle(const Color(0xFFBD561D), OctIcons.organization_16),
+                                _buildCircle(const Color(0xFFA371F7), OctIcons.people_16),
+                                _buildCircle(const Color(0xFF8250DF), OctIcons.project_16),
+                                _buildCircle(const Color(0xFF30363D), OctIcons.file_diff_16),
+                              ],
                             ),
                             SizedBox(height: 7,),
                             Padding(padding: EdgeInsetsGeometry.only(right: 30, left: 30),
                             child: Column(children: [Text('The things you need, one tap away', style: TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.bold),textAlign: TextAlign.center,),
                             SizedBox(height: 8),
                             Text('Fast access your lists of Issue, Pull Requests, or Discussions', style: TextStyle(color: const Color.fromARGB(162, 255, 255, 255), fontSize: 17,),textAlign: TextAlign.center,),],),),
-                            SizedBox(height: 7,),
-                            OutlinedButton(onPressed: (){}, child: Text('Get Started',style: TextStyle(color: Colors.blue),)),
+                            SizedBox(height: 15,),
+                            SizedBox(
+                              width: double.infinity,
+                              height: 40,
+                              child: OutlinedButton(onPressed: (){}, 
+                              style: OutlinedButton.styleFrom(
+                                  backgroundColor: const Color(0xFF21262D),
+                                  side: const BorderSide(
+                                    color: Color(0xFF30363D),
+                                    width: 1,
+                                  ),
+                                  shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(6),
+                                  ),
+                                ),
+                                child: Text('GET STARTED',style: TextStyle(color: Colors.blue,),),
+                              ),
+                            ),
                             SizedBox(height: 100,)
                         ],
                     ),
@@ -194,3 +293,16 @@ class GithubApp extends StatelessWidget {
         );
     }
 }
+
+Widget _buildCircle(Color color, IconData icon) {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 3),
+      width: 28,
+      height: 28,
+      decoration: BoxDecoration(
+        color: color,
+        shape: BoxShape.circle,
+      ),
+      child: Icon(icon, color: Colors.white, size: 14),
+    );
+  }
