@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_octicons/flutter_octicons.dart';
 
 void main(){
     runApp(GithubApp());
@@ -21,6 +22,8 @@ class GithubApp extends StatelessWidget {
                         IconButton(onPressed: (){}, icon: Icon(Icons.person,color: Color(0xFF86B5EB),size: 22))
                     ],
                     backgroundColor: const Color(0xFF17181C),
+                    scrolledUnderElevation: 0,
+                    
                 ),
 
                 bottomNavigationBar: 
@@ -53,62 +56,103 @@ class GithubApp extends StatelessWidget {
                             InkWell(
                             child: Row(
                                 children: [
-                                    IconButton(onPressed: (){}, icon: Icon(Icons.radio_button_checked_rounded, color: Colors.green,)),
-                                    SizedBox(width: 5,),
+                                    Container(
+                                        height: 35,
+                                        width: 35,
+                                        decoration: BoxDecoration(
+                                            color: Colors.green,
+                                            borderRadius: BorderRadius.circular(5)
+                                        ),
+                                        child: IconButton(onPressed: (){}, icon: Icon(OctIcons.issue_opened_24, color: Colors.white, size: 20,),),),
+                                    SizedBox(width: 20,),
                                     Text('Issues', style: TextStyle(color: Colors.white, fontSize: 17),)
+                                    
                                 ],
                             ),),
-                            SizedBox(height: 3,),
+                            SizedBox(height: 25,),
                             InkWell(
                             child: Row(
                                 children: [
-                                    IconButton(onPressed: (){}, icon: Icon(Icons.radio_button_checked_rounded, color: Colors.blue)),
-                                    SizedBox(width: 5,),
+                                    Container(
+                                        height: 35,
+                                        width: 35,
+                                        decoration: BoxDecoration(
+                                            color: Colors.blue,
+                                            borderRadius: BorderRadius.circular(5)
+                                        ),
+                                        child: IconButton(onPressed: (){}, icon: Icon(OctIcons.git_pull_request_24, color: Colors.white, size: 20,),),),
+                                    SizedBox(width: 20,),
                                     Text('Pull Requests', style: TextStyle(color: Colors.white, fontSize: 17),)
                                 ],
                             ),),
-                            SizedBox(height: 3,),
+                            SizedBox(height: 25,),
                             InkWell(
                             child: Row(
                                 children: [
-                                    IconButton(onPressed: (){}, icon: Icon(Icons.radio_button_checked_rounded, color: Colors.blue)),
-                                    SizedBox(width: 5,),
+                                    Container(
+                                        height: 35,
+                                        width: 35,
+                                        decoration: BoxDecoration(
+                                            color: const Color(0xFF8250DF),
+                                            borderRadius: BorderRadius.circular(5)
+                                        ),
+                                        child: IconButton(onPressed: (){}, icon: Icon(OctIcons.comment_discussion_24, color: Colors.white, size: 20,),),),
+                                    SizedBox(width: 20,),
                                     Text('Discussions', style: TextStyle(color: Colors.white, fontSize: 17),)
                                 ],
                             ),),
-                            SizedBox(height: 3,),
+                            SizedBox(height: 25,),
                             InkWell(
                             child: Row(
                                 children: [
-                                    IconButton(onPressed: (){}, icon: Icon(Icons.radio_button_checked_rounded, color: Colors.blue)),
-                                    SizedBox(width: 5,),
+                                    Container(
+                                        height: 35,
+                                        width: 35,
+                                        decoration: BoxDecoration(
+                                            color: Colors.grey,
+                                            borderRadius: BorderRadius.circular(5)
+                                        ),
+                                        child: IconButton(onPressed: (){}, icon: Icon(OctIcons.project_24, color: Colors.white, size: 20,),),),
+                                    SizedBox(width: 20,),
                                     Text('Projects', style: TextStyle(color: Colors.white, fontSize: 17),)
                                 ],
                             ),),
-                            SizedBox(height: 3,),
+                            SizedBox(height: 25,),
                             InkWell(
                             child: Row(
                                 children: [
-                                    IconButton(onPressed: (){}, icon: Icon(Icons.radio_button_checked_rounded, color: Colors.blue)),
-                                    SizedBox(width: 5,),
+                                    Container(
+                                        color: Color(0xFF30363D),
+                                        height: 35,
+                                        width: 35,
+                                        child: IconButton(onPressed: (){}, icon: Icon(OctIcons.repo_24, color: Colors.white, size: 20,),),),
+                                    SizedBox(width: 20,),
                                     Text('Top Repositories', style: TextStyle(color: Colors.white, fontSize: 17),)
                                 ],
                             ),),
-                            SizedBox(height: 3,),
+                            SizedBox(height: 25,),
                             InkWell(
                             child: Row(
                                 children: [
-                                    IconButton(onPressed: (){}, icon: Icon(Icons.radio_button_checked_rounded, color: Colors.blue)),
-                                    SizedBox(width: 5,),
+                                    Container(
+                                        color: Colors.orange,
+                                        height: 35,
+                                        width: 35,
+                                        child: IconButton(onPressed: (){}, icon: Icon(OctIcons.organization_24, color: Colors.white, size: 20,),),),
+                                    SizedBox(width: 20,),
                                     Text('Organizations', style: TextStyle(color: Colors.white, fontSize: 17),)
                                 ],
                             ),),
-                            SizedBox(height: 3,),
+                            SizedBox(height: 25,),
                             InkWell(
                             child: Row(
                                 children: [
-                                    IconButton(onPressed: (){}, icon: Icon(Icons.radio_button_checked_rounded, color: Colors.blue)),
-                                    SizedBox(width: 5,),
+                                    Container(
+                                        color: const Color(0xFFD4A72C),
+                                        height: 35,
+                                        width: 35,
+                                        child: IconButton(onPressed: (){}, icon: Icon(OctIcons.star_24, color: Colors.white, size: 20,),),),
+                                    SizedBox(width: 20,),
                                     Text('Starred', style: TextStyle(color: Colors.white, fontSize: 17),)
                                 ],
                             ),),
@@ -120,7 +164,7 @@ class GithubApp extends StatelessWidget {
                             SizedBox(height: 7,),
                             OutlinedButton(onPressed: (){}, child: Text('ADD FAVORITES',style: TextStyle(color: Colors.blue),)),
                             SizedBox(height: 20,),
-                            Padding(padding: EdgeInsetsGeometry.only(right: 225),
+                            Padding(padding: EdgeInsetsGeometry.only(right: 240),
                             child: Text('Shortcuts', style: TextStyle(color: Colors.white, fontSize: 17, fontWeight: FontWeight.bold,), textAlign: TextAlign.start,),),
                             SizedBox(height: 30,),
                             Row(
