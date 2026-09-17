@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_octicons/flutter_octicons.dart';
+import 'package:github/screens/my_work_screens/discussions_screen.dart';
 import 'package:github/screens/my_work_screens/issues_screen.dart';
 import 'package:github/screens/my_work_screens/pr_screen.dart';
 import 'package:github/screens/profile_screen.dart';
@@ -112,6 +113,10 @@ class HomeScreen extends StatelessWidget{
                             ),),
                             SizedBox(height: 25,),
                             InkWell(
+                            onTap: (){
+                              Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => const DiscussionsScreen()),);
+                            },
                             child: Row(
                                 children: [
                                     Container(
@@ -121,7 +126,10 @@ class HomeScreen extends StatelessWidget{
                                             color: const Color(0xFF8250DF),
                                             borderRadius: BorderRadius.circular(5)
                                         ),
-                                        child: IconButton(onPressed: (){}, icon: Icon(OctIcons.comment_discussion_24, color: Colors.white, size: 20,),),),
+                                        child: IconButton(onPressed: (){
+                                          Navigator.push(context,
+                                          MaterialPageRoute(builder: (context) => const DiscussionsScreen()),);
+                                        }, icon: Icon(OctIcons.comment_discussion_24, color: Colors.white, size: 20,),),),
                                     SizedBox(width: 20,),
                                     Text('Discussions', style: TextStyle(color: Colors.white, fontSize: 17),)
                                 ],
