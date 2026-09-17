@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_octicons/flutter_octicons.dart';
+import 'package:github/screens/profile_screen.dart';
 import 'package:github/screens/search_screen.dart';
 
 class HomeScreen extends StatelessWidget{
@@ -38,7 +39,10 @@ class HomeScreen extends StatelessWidget{
                             PopupMenuItem(child: Text('New repository', style: TextStyle(fontSize: 15),))
                           ],
                          icon: Icon(Icons.add_circle_outline,color: Color(0xFF86B5EB),size: 22)),
-                        IconButton(onPressed: (){}, icon: Icon(Icons.person,color: Color(0xFF86B5EB),size: 22))
+                        IconButton(onPressed: (){
+                          Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => const ProfileHeader()),); 
+                        }, icon: Icon(Icons.person,color: Color(0xFF86B5EB),size: 22))
                     ],
                     backgroundColor: const Color(0xFF17181C),
                     scrolledUnderElevation: 0,
