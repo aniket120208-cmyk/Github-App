@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_octicons/flutter_octicons.dart';
+import 'package:github/screens/copilot_screen.dart';
+import 'package:github/screens/explore_screen.dart';
 import 'package:github/screens/home_screen.dart';
 import 'package:github/screens/inbox_screen.dart';
 
@@ -21,14 +23,17 @@ class _GithubAppState extends State<GithubApp> {
         } else if (index == 1) {
             return InboxScreen();
         } else if (index == 2) {
-            return HomeScreen();
+            return ExploreScreen();
         } else {
-            return HomeScreen();
+            return CopilotScreen();
         }
     }
     @override
     Widget build(BuildContext context) {
         return MaterialApp(
+            theme: ThemeData(
+            brightness: Brightness.dark,
+            ),
             debugShowCheckedModeBanner: false,
             home: Scaffold(
                  bottomNavigationBar: 
