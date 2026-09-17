@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_octicons/flutter_octicons.dart';
+import 'package:github/screens/my_work_screens/issues_screen.dart';
+import 'package:github/screens/my_work_screens/pr_screen.dart';
 import 'package:github/screens/profile_screen.dart';
 import 'package:github/screens/search_screen.dart';
 
@@ -63,6 +65,10 @@ class HomeScreen extends StatelessWidget{
                             ),
                             SizedBox(height: 20),
                             InkWell(
+                            onTap: (){
+                              Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => const IssuesScreen()),);
+                            },
                             child: Row(
                                 children: [
                                     Container(
@@ -72,7 +78,10 @@ class HomeScreen extends StatelessWidget{
                                             color: Colors.green,
                                             borderRadius: BorderRadius.circular(5)
                                         ),
-                                        child: IconButton(onPressed: (){}, icon: Icon(OctIcons.issue_opened_24, color: Colors.white, size: 20,),),),
+                                        child: IconButton(onPressed: (){
+                                          Navigator.push(context,
+                                          MaterialPageRoute(builder: (context) => const IssuesScreen()),);
+                                        }, icon: Icon(OctIcons.issue_opened_24, color: Colors.white, size: 20,),),),
                                     SizedBox(width: 20,),
                                     Text('Issues', style: TextStyle(color: Colors.white, fontSize: 17),)
                                     
@@ -80,6 +89,10 @@ class HomeScreen extends StatelessWidget{
                             ),),
                             SizedBox(height: 25,),
                             InkWell(
+                              onTap: (){
+                                Navigator.push(context,
+                                MaterialPageRoute(builder: (context) => const PullRequestsScreen()),);
+                              },
                             child: Row(
                                 children: [
                                     Container(
@@ -89,7 +102,10 @@ class HomeScreen extends StatelessWidget{
                                             color: Colors.blue,
                                             borderRadius: BorderRadius.circular(5)
                                         ),
-                                        child: IconButton(onPressed: (){}, icon: Icon(OctIcons.git_pull_request_24, color: Colors.white, size: 20,),),),
+                                        child: IconButton(onPressed: (){
+                                          Navigator.push(context,
+                                          MaterialPageRoute(builder: (context) => const PullRequestsScreen()),);
+                                        }, icon: Icon(OctIcons.git_pull_request_24, color: Colors.white, size: 20,),),),
                                     SizedBox(width: 20,),
                                     Text('Pull Requests', style: TextStyle(color: Colors.white, fontSize: 17),)
                                 ],
