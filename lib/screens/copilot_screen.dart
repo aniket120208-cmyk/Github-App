@@ -16,8 +16,10 @@ class CopilotScreen extends StatelessWidget {
         backgroundColor: const Color(0xFF17181C),
         scrolledUnderElevation: 0,
         actions: [
-          IconButton(
-            onPressed: () {},
+          PopupMenuButton(
+            itemBuilder: (context) => [
+              PopupMenuItem(child: Text('Refresh',style: TextStyle(color: Colors.blue),))
+            ],
             icon: const Icon(Icons.more_vert, color: Color(0xFF58A6FF)),
           ),
         ],
@@ -28,7 +30,14 @@ class CopilotScreen extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         child: const Icon(Icons.add, color: Colors.white, size: 28),
       ),
-      body: ListView(
+      body: RefreshIndicator(
+        onRefresh: () async{
+          await Future.delayed(Duration(seconds: 2));
+        },
+        color: Colors.white,
+        backgroundColor: Colors.blue,
+        child: 
+        ListView(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         children: [
           const SizedBox(height: 10),
@@ -195,6 +204,7 @@ class CopilotScreen extends StatelessWidget {
           ),
           const SizedBox(height: 100),
         ],
+      ),
       ),
     );
   }
