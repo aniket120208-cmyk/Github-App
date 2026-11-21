@@ -1,17 +1,31 @@
-# github
+# GitHub Mobile UI Clone
 
-A new Flutter project.
+A Flutter implementation replicating the user interface and navigation flows of the GitHub mobile application.
 
-## Getting Started
+## Overview
 
-This project is a starting point for a Flutter application.
+This project recreates the dark-mode interface of GitHub Mobile using Flutter and Dart. It focuses on clean screen architecture, smooth navigation between core tabs, and responsive UI components matching the native mobile experience.
 
-A few resources to get you started if this is your first Flutter project:
+## Implemented Screens
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+- **Home (`home_screen.dart`)**: Central dashboard with quick-access shortcuts, recent activity feeds, and direct navigation to the discussions view.
+- **My Work (`my_work_screens/`)**: Dedicated section organizing user-specific workflows, including the Discussions screen.
+- **Copilot (`copilot_screen.dart`)**: Interactive interface modeled after GitHub Copilot, complete with pull-to-refresh support.
+- **Inbox (`inbox_screen.dart`)**: Notification center layout for managing mentions, review requests, and repository updates.
+- **Explore (`explore_screen.dart`)**: Discovery feed showcasing trending repositories and developer activity.
+- **Search (`search_screen.dart`)**: Search interface for querying repositories, issues, pull requests, and users.
+- **Profile (`profile_screen.dart`)**: User profile view displaying account details, contribution highlights, and pinned repositories.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Project Structure
+
+```text
+lib/
+└── screens/
+    ├── my_work_screens/
+    │   └── discussions_screen.dart
+    ├── copilot_screen.dart
+    ├── explore_screen.dart
+    ├── home_screen.dart
+    ├── inbox_screen.dart
+    ├── profile_screen.dart
+    └── search_screen.dart
